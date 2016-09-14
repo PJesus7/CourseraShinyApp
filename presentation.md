@@ -1,7 +1,7 @@
 Shiny Application and Reproducible Pitch: Distribution of the mean of the exponential distribution
 ========================================================
 author: Pedro Jesus 
-date: Wed Sep 14 19:03:05 2016
+date: Wed Sep 14 19:18:21 2016
 autosize: true
 
 Overview
@@ -9,9 +9,9 @@ Overview
 
 Show the Central Limit Theorem in action for the exponential distribution.
 
-Presentation is part of the peer assessment for the Coursera Developing Data Products.
+Presentation/App is the course project of Coursera's Developing Data Products.
 
-App was build using shiny: https://pjesus7.shinyapps.io/CLTApp/
+App was built using shiny: https://pjesus7.shinyapps.io/CLTApp/
 - One tab has the interface
 - Another tab describes what the app does
 
@@ -29,7 +29,7 @@ Also to verify that the mean and standard deviation of these simulations tend to
 Histogram evolution
 ========================================================
 
-Take $\lambda = 0.2$, $N = 20$.
+Take $\lambda = 0.2$, $N = 20$. Remember $s$ is the number of simulations.
 
 ![plot of chunk unnamed-chunk-1](presentation-figure/unnamed-chunk-1-1.png)
 

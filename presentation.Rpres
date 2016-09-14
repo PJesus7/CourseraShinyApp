@@ -9,9 +9,9 @@ Overview
 
 Show the Central Limit Theorem in action for the exponential distribution.
 
-Presentation is part of the peer assessment for the Coursera Developing Data Products.
+Presentation/App is the course project of Coursera's Developing Data Products.
 
-App was build using shiny: https://pjesus7.shinyapps.io/CLTApp/
+App was built using shiny: https://pjesus7.shinyapps.io/CLTApp/
 - One tab has the interface
 - Another tab describes what the app does
 
@@ -29,7 +29,7 @@ Also to verify that the mean and standard deviation of these simulations tend to
 Histogram evolution
 ========================================================
 
-Take $\lambda = 0.2$, $N = 20$.
+Take $\lambda = 0.2$, $N = 20$. Remember $s$ is the number of simulations.
 
 ```{r, echo=FALSE}
 library(ggplot2)
@@ -45,25 +45,25 @@ theoSD <- 1/(sqrt(20)*0.2)
 means <- data.frame(x = sample(data,100))
 p1 <- ggplot(means) + 
     geom_histogram(aes(x = x, y = ..density..), bins = 25) +
-    ggtitle("N = 100") +
+    ggtitle("s = 100") +
     stat_function(fun = dnorm, colour = "red", args = list(mean = theoMean, sd = theoSD))
 
 means <- data.frame(x = sample(data,300))
 p2 <- ggplot(means) + 
     geom_histogram(aes(x = x, y = ..density..), bins = 25) +
-    ggtitle("N = 300") +
+    ggtitle("s = 300") +
     stat_function(fun = dnorm, colour = "red", args = list(mean = theoMean, sd = theoSD))
 
 means <- data.frame(x = sample(data,1000))
 p3 <- ggplot(means) + 
     geom_histogram(aes(x = x, y = ..density..), bins = 25) +
-    ggtitle("N = 1000") +
+    ggtitle("s = 1000") +
     stat_function(fun = dnorm, colour = "red", args = list(mean = theoMean, sd = theoSD))
 
 means <- data.frame(x = sample(data,2500))
 p4 <- ggplot(means) +
     geom_histogram(aes(x = x, y = ..density..), bins = 25) +
-    ggtitle("N = 2500") +
+    ggtitle("s = 2500") +
     stat_function(fun = dnorm, colour = "red", args = list(mean = theoMean, sd = theoSD))
 
 grid.arrange(p1, p2, p3, p4)
