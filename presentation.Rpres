@@ -1,0 +1,69 @@
+Shiny Application and Reproducible Pitch: Distribution of the mean of the exponential distribution
+========================================================
+author: Pedro Jesus 
+date: `r date()`
+autosize: true
+
+Overview
+========================================================
+
+Show the Central Limit Theorem in action for the exponential distribution.
+
+Presentation is being created as part of the peer assessment for the Coursera Developing Data Products.
+
+App was build using shiny:
+
+This presentation is made on RStudio Presenter.
+
+Goal
+========================================================
+
+The goal of this app is to show that increasing the number of simulations the distribution of the mean of exponential distributions leads to a normal distribution.
+
+Also to verify that the mean and standard deviation of these simulations tend to its theoretical values as the number of simulations increases.
+
+Histogram evolution
+========================================================
+
+Take $\lambda = 0.2$, $N = 20$.
+
+```{r, echo=FALSE}
+library(ggplot2)
+library(gridExtra)
+
+data <- matrix(rexp(20*2500, 0.2), 2500)
+data <- apply(data,1,mean)
+
+
+theoMean <- 1/0.2
+theoSD <- 1/(sqrt(20)*0.2)
+
+means <- data.frame(x = sample(data,100))
+p1 <- ggplot(means) + 
+    geom_histogram(aes(x = x, y = ..density..), bins = 25) +
+    ggtitle("N = 100") +
+    stat_function(fun = dnorm, colour = "red", args = list(mean = theoMean, sd = theoSD))
+
+means <- data.frame(x = sample(data,300))
+p2 <- ggplot(means) + 
+    geom_histogram(aes(x = x, y = ..density..), bins = 25) +
+    ggtitle("N = 300") +
+    stat_function(fun = dnorm, colour = "red", args = list(mean = theoMean, sd = theoSD))
+
+means <- data.frame(x = sample(data,1000))
+p3 <- ggplot(means) + 
+    geom_histogram(aes(x = x, y = ..density..), bins = 25) +
+    ggtitle("N = 1000") +
+    stat_function(fun = dnorm, colour = "red", args = list(mean = theoMean, sd = theoSD))
+
+means <- data.frame(x = sample(data,2500))
+p4 <- ggplot(means) +
+    geom_histogram(aes(x = x, y = ..density..), bins = 25) +
+    ggtitle("N = 2500") +
+    stat_function(fun = dnorm, colour = "red", args = list(mean = theoMean, sd = theoSD))
+
+grid.arrange(p1, p2, p3, p4)
+```
+
+Histogram evolution
+========================================================
